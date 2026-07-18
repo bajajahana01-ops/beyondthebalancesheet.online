@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+from pathlib import Path
+
+html = r'''<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -226,6 +228,8 @@ By Ahana Bajaj
 
 <a href="interviews.html">INTERVIEWS</a>
 
+<a href="tools.html">TOOLS</a>
+
 <a href="about.html">ABOUT</a>
 
 </nav>
@@ -379,3 +383,10 @@ Independent Accounting & Finance Research
 </body>
 
 </html>
+'''
+
+path = Path("/mnt/data/index.html")
+path.write_text(html, encoding="utf-8")
+
+print(path)
+
