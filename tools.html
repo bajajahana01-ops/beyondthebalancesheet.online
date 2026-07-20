@@ -3,129 +3,660 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Financial Tools | Beyond the Balance Sheet</title>
+<title>Beyond the Balance Sheet | Financial Tools</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:Georgia,serif;background:#f6f8f7;color:#1b1f23;line-height:1.8;}
-.header{background:#0b2545;color:#fff;padding:80px 20px;text-align:center;border-bottom:5px solid #1b8a5a;}
-.header h1{font-size:60px;letter-spacing:2px;margin-bottom:15px;}
-.header h2{font-size:20px;font-weight:normal;color:#b9d8cf;margin-bottom:30px;}
-.header p{max-width:700px;margin:auto;font-size:18px;}
-.author{margin-top:30px;font-size:20px;font-style:italic;color:#d7ebe3;}
-nav{background:#fff;padding:20px;text-align:center;border-bottom:1px solid #d9d9d9;position:sticky;top:0;}
-nav a{text-decoration:none;margin:0 20px;color:#0b2545;font-weight:bold;font-size:15px;letter-spacing:1px;}
-.container{width:90%;max-width:1200px;margin:auto;padding:60px 0;}
-.section-title{font-size:14px;letter-spacing:3px;color:#1b8a5a;margin-bottom:10px;text-transform:uppercase;}
-.featured{background:#fff;padding:40px;border-left:8px solid #1b8a5a;box-shadow:0 5px 20px rgba(0,0,0,.08);margin-bottom:60px;}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;}
-.card{background:#fff;padding:30px;box-shadow:0 4px 15px rgba(0,0,0,.06);border-top:5px solid #1b8a5a;}
-.button{display:inline-block;margin-top:25px;padding:12px 25px;background:#0b2545;color:#fff;border:none;cursor:pointer;font-weight:bold;}
-.mission{background:#0b2545;color:#fff;padding:60px;margin-top:70px;text-align:center;}
-footer{margin-top:80px;background:#111;color:#fff;padding:30px;text-align:center;}
-input{width:100%;padding:10px;margin-top:5px;}
+:root{
+    --primary:#0b2545;
+    --accent:#1b8a5a;
+    --bg:#f6f8f7;
+    --white:#ffffff;
+    --success:#dff5e8;
+    --warning:#fff3d6;
+    --danger:#fde2e2;
+    --text:#1f2937;
+    --shadow:0 12px 30px rgba(0,0,0,0.08);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Georgia, serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.7;
+}
+
+header{
+    background:var(--primary);
+    color:white;
+    padding:3rem 1rem;
+    text-align:center;
+}
+
+header h1{
+    font-size:2.7rem;
+    margin-bottom:0.75rem;
+}
+
+header p{
+    max-width:800px;
+    margin:auto;
+}
+
+.container{
+    width:min(1200px,92%);
+    margin:auto;
+    padding:3rem 0;
+}
+
+.tool-card{
+    background:var(--white);
+    border-radius:18px;
+    padding:2rem;
+    margin-bottom:2.5rem;
+    box-shadow:var(--shadow);
+    transition:transform .25s ease, box-shadow .25s ease;
+}
+
+.tool-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 18px 40px rgba(0,0,0,0.12);
+}
+
+.tool-title{
+    color:var(--primary);
+    margin-bottom:1rem;
+    border-bottom:3px solid var(--accent);
+    padding-bottom:.6rem;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:1rem;
+    margin-top:1rem;
+}
+
+.input-group{
+    display:flex;
+    flex-direction:column;
+}
+
+label{
+    margin-bottom:.4rem;
+    font-weight:bold;
+    color:var(--primary);
+}
+
+input{
+    padding:.85rem;
+    border:1px solid #cfd8dc;
+    border-radius:10px;
+    font-size:1rem;
+}
+
+input:focus{
+    outline:none;
+    border-color:var(--accent);
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:1rem;
+    margin-top:1.5rem;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+    padding:.9rem 1.3rem;
+    border-radius:10px;
+    font-size:1rem;
+    transition:.25s;
+    font-family:Georgia, serif;
+}
+
+.primary-btn{
+    background:var(--primary);
+    color:white;
+}
+
+.primary-btn:hover{
+    background:#133867;
+}
+
+.secondary-btn{
+    background:var(--accent);
+    color:white;
+}
+
+.secondary-btn:hover{
+    opacity:.9;
+}
+
+.results{
+    margin-top:2rem;
+    background:#f9fbfc;
+    border-left:6px solid var(--accent);
+    border-radius:12px;
+    padding:1.5rem;
+}
+
+.result-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:1rem;
+    margin-top:1rem;
+}
+
+.result-box{
+    background:white;
+    padding:1rem;
+    border-radius:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.05);
+}
+
+.result-box h4{
+    color:var(--primary);
+    margin-bottom:.4rem;
+}
+
+.info-box{
+    margin-top:1.5rem;
+    padding:1.2rem;
+    border-radius:12px;
+    background:#eef5fb;
+    border-left:5px solid var(--primary);
+}
+
+.success{
+    background:var(--success);
+}
+
+.warning{
+    background:var(--warning);
+}
+
+.danger{
+    background:var(--danger);
+}
+
+.ratio-card{
+    background:#fbfcfd;
+    border:1px solid #e3e8ec;
+    border-radius:12px;
+    padding:1rem;
+    margin-top:1rem;
+}
+
+footer{
+    background:var(--primary);
+    color:white;
+    text-align:center;
+    padding:2rem 1rem;
+    margin-top:2rem;
+}
+
+@media(max-width:768px){
+    header h1{
+        font-size:2rem;
+    }
+}
 </style>
 </head>
+
 <body>
 
-<div class="header">
-<h1>BEYOND THE BALANCE SHEET</h1>
-<h2>Accounting • Finance • Research</h2>
-<p>Interactive financial tools designed to help students, professionals, and lifelong learners apply accounting and finance concepts.</p>
-<div class="author">By Ahana Bajaj</div>
-</div>
-
-<nav>
-<a href="index.html">HOME</a>
-<a href="research.html">RESEARCH</a>
-<a href="special-reports.html">SPECIAL REPORTS</a>
-<a href="interviews.html">INTERVIEWS</a>
-<a href="tools.html">TOOLS</a>
-<a href="about.html">ABOUT</a>
-</nav>
+<header>
+    <h1>Beyond the Balance Sheet</h1>
+    <p>Professional Financial Planning, Net Worth Analysis, and Accounting Ratio Tools</p>
+</header>
 
 <div class="container">
 
-<div class="section-title">FINANCIAL TOOLS</div>
+    <!-- Budget Planner -->
+    <section class="tool-card">
+        <h2 class="tool-title">Budget Planner</h2>
 
-<div class="featured">
-<h2>Learn by Doing</h2>
-<p>Use these interactive calculators to practice real-world accounting and personal finance concepts.</p>
-</div>
+        <div class="grid">
+            <div class="input-group">
+                <label>Monthly Income</label>
+                <input type="number" id="income" min="0">
+            </div>
 
-<div class="section-title">AVAILABLE TOOLS</div>
+            <div class="input-group">
+                <label>Housing</label>
+                <input type="number" id="housing" min="0">
+            </div>
 
-<div class="grid">
+            <div class="input-group">
+                <label>Food</label>
+                <input type="number" id="food" min="0">
+            </div>
 
-<div class="card">
-<h3>Budget Planner</h3>
+            <div class="input-group">
+                <label>Transportation</label>
+                <input type="number" id="transportation" min="0">
+            </div>
 
-<p>Enter your monthly income and expenses below.</p><br>
+            <div class="input-group">
+                <label>Other Expenses</label>
+                <input type="number" id="otherExpenses" min="0">
+            </div>
+        </div>
 
-<label>Monthly Income</label>
-<input type="number" id="income">
+        <div class="button-row">
+            <button class="primary-btn" onclick="calculateBudget()">Calculate Budget</button>
+            <button class="secondary-btn" onclick="resetBudget()">Reset</button>
+        </div>
 
-<label>Housing</label>
-<input type="number" id="housing">
+        <div id="budgetResults" class="results" style="display:none;"></div>
 
-<label>Food</label>
-<input type="number" id="food">
+        <div class="info-box">
+            <h3>Why This Matters</h3>
+            <p>
+                Budgeting helps individuals allocate resources efficiently, improve savings behavior,
+                reduce financial stress, and create long-term financial stability. Tracking income and
+                expenses is one of the most effective ways to strengthen personal financial health.
+            </p>
+        </div>
+    </section>
 
-<label>Transportation</label>
-<input type="number" id="transportation">
+    <!-- Net Worth Calculator -->
+    <section class="tool-card">
+        <h2 class="tool-title">Net Worth Calculator</h2>
 
-<label>Other Expenses</label>
-<input type="number" id="other">
+        <h3>Assets</h3>
 
-<button class="button" onclick="calculateBudget()">Calculate</button>
+        <div class="grid">
+            <div class="input-group">
+                <label>Cash</label>
+                <input type="number" id="cash" min="0">
+            </div>
 
-<div id="results" style="margin-top:20px;font-weight:bold;"></div>
+            <div class="input-group">
+                <label>Investments</label>
+                <input type="number" id="investments" min="0">
+            </div>
 
-</div>
+            <div class="input-group">
+                <label>Property</label>
+                <input type="number" id="property" min="0">
+            </div>
 
-<div class="card">
-<h3>Net Worth Calculator</h3>
-<p>Calculate your assets and liabilities.</p>
-<a class="button" href="#">Coming Soon</a>
-</div>
+            <div class="input-group">
+                <label>Vehicles</label>
+                <input type="number" id="vehicles" min="0">
+            </div>
+        </div>
 
-<div class="card">
-<h3>Financial Ratio Calculator</h3>
-<p>Calculate common accounting and finance ratios.</p>
-<a class="button" href="#">Coming Soon</a>
-</div>
+        <h3 style="margin-top:1.5rem;">Liabilities</h3>
 
-</div>
+        <div class="grid">
+            <div class="input-group">
+                <label>Mortgage</label>
+                <input type="number" id="mortgage" min="0">
+            </div>
 
-<div class="mission">
-<h2>Our Mission</h2>
-<p>Beyond the Balance Sheet is committed to making accounting and finance accessible through research, education, and practical tools.</p>
-</div>
+            <div class="input-group">
+                <label>Student Loans</label>
+                <input type="number" id="studentLoans" min="0">
+            </div>
+
+            <div class="input-group">
+                <label>Credit Cards</label>
+                <input type="number" id="creditCards" min="0">
+            </div>
+
+            <div class="input-group">
+                <label>Other Debt</label>
+                <input type="number" id="otherDebt" min="0">
+            </div>
+        </div>
+
+        <div class="button-row">
+            <button class="primary-btn" onclick="calculateNetWorth()">Calculate Net Worth</button>
+            <button class="secondary-btn" onclick="resetNetWorth()">Reset</button>
+        </div>
+
+        <div id="netWorthResults" class="results" style="display:none;"></div>
+
+        <div class="info-box">
+            <h3>Educational Explanation</h3>
+            <p>
+                Net worth measures overall financial position by subtracting liabilities from assets.
+                Monitoring net worth over time can reveal whether financial decisions are strengthening
+                or weakening long-term wealth.
+            </p>
+        </div>
+    </section>
+
+    <!-- Financial Ratios -->
+    <section class="tool-card">
+        <h2 class="tool-title">Financial Ratio Calculator</h2>
+
+        <div class="grid">
+
+            <div class="input-group">
+                <label>Current Assets</label>
+                <input type="number" id="currentAssets" min="0">
+            </div>
+
+            <div class="input-group">
+                <label>Current Liabilities</label>
+                <input type="number" id="currentLiabilities" min="0">
+            </div>
+
+            <div class="input-group">
+                <label>Total Debt</label>
+                <input type="number" id="totalDebt" min="0">
+            </div>
+
+            <div class="input-group">
+                <label>Total Equity</label>
+                <input type="number" id="totalEquity" min="0">
+            </div>
+
+            <div class="input-group">
+                <label>Revenue</label>
+                <input type="number" id="revenue" min="0">
+            </div>
+
+            <div class="input-group">
+                <label>Cost of Goods Sold</label>
+                <input type="number" id="cogs" min="0">
+            </div>
+
+            <div class="input-group">
+                <label>Net Income</label>
+                <input type="number" id="netIncome" min="0">
+            </div>
+
+            <div class="input-group">
+                <label>Total Assets</label>
+                <input type="number" id="totalAssets" min="0">
+            </div>
+
+        </div>
+
+        <div class="button-row">
+            <button class="primary-btn" onclick="calculateRatios()">Calculate Ratios</button>
+            <button class="secondary-btn" onclick="resetRatios()">Reset</button>
+        </div>
+
+        <div id="ratioResults" class="results" style="display:none;"></div>
+    </section>
 
 </div>
 
 <footer>
-© 2026 Beyond the Balance Sheet
-<br><br>
-Independent Accounting & Finance Research
+    Beyond the Balance Sheet • Accounting, Finance & Financial Analysis Tools
 </footer>
 
 <script>
-function calculateBudget(){
-let income=Number(document.getElementById("income").value);
-let housing=Number(document.getElementById("housing").value);
-let food=Number(document.getElementById("food").value);
-let transportation=Number(document.getElementById("transportation").value);
-let other=Number(document.getElementById("other").value);
 
-let expenses=housing+food+transportation+other;
-let savings=income-expenses;
-let savingsRate=income>0?(savings/income)*100:0;
+/* ---------- Reusable Helper Functions ---------- */
 
-document.getElementById("results").innerHTML=
-"<strong>Total Expenses:</strong> $"+expenses+
-"<br><strong>Money Left Over:</strong> $"+savings+
-"<br><strong>Savings Rate:</strong> "+savingsRate.toFixed(1)+"%";
+function getValue(id){
+    return parseFloat(document.getElementById(id).value) || 0;
 }
+
+function formatCurrency(value){
+    return new Intl.NumberFormat('en-US',{
+        style:'currency',
+        currency:'USD'
+    }).format(value);
+}
+
+function clearInputs(ids){
+    ids.forEach(id => document.getElementById(id).value = "");
+}
+
+function validateNonNegative(values){
+    return values.every(v => v >= 0);
+}
+
+/* ---------- Budget Planner ---------- */
+
+function calculateBudget(){
+
+    const income = getValue("income");
+    const housing = getValue("housing");
+    const food = getValue("food");
+    const transportation = getValue("transportation");
+    const other = getValue("otherExpenses");
+
+    if(!validateNonNegative([income,housing,food,transportation,other])){
+        alert("Please enter valid values.");
+        return;
+    }
+
+    const expenses = housing + food + transportation + other;
+    const leftover = income - expenses;
+    const savingsRate = income > 0 ? (leftover / income) * 100 : 0;
+
+    let score = 0;
+
+    if(savingsRate >= 20) score = 95;
+    else if(savingsRate >= 15) score = 85;
+    else if(savingsRate >= 10) score = 75;
+    else if(savingsRate >= 5) score = 65;
+    else score = 45;
+
+    let tip = "";
+
+    if(savingsRate >= 20){
+        tip = "Excellent savings habits. Continue investing and building long-term wealth.";
+    }else if(savingsRate >= 10){
+        tip = "Good progress. Consider increasing automated savings contributions.";
+    }else{
+        tip = "Review discretionary spending and identify opportunities to reduce expenses.";
+    }
+
+    document.getElementById("budgetResults").style.display = "block";
+
+    document.getElementById("budgetResults").innerHTML = `
+        <div class="result-grid">
+            <div class="result-box">
+                <h4>Total Expenses</h4>
+                <p>${formatCurrency(expenses)}</p>
+            </div>
+
+            <div class="result-box">
+                <h4>Money Left Over</h4>
+                <p>${formatCurrency(leftover)}</p>
+            </div>
+
+            <div class="result-box">
+                <h4>Savings Rate</h4>
+                <p>${savingsRate.toFixed(2)}%</p>
+            </div>
+
+            <div class="result-box">
+                <h4>Financial Health Score</h4>
+                <p>${score}/100</p>
+            </div>
+        </div>
+
+        <div class="info-box success">
+            <strong>Personalized Tip:</strong> ${tip}
+        </div>
+    `;
+}
+
+function resetBudget(){
+    clearInputs([
+        "income",
+        "housing",
+        "food",
+        "transportation",
+        "otherExpenses"
+    ]);
+    document.getElementById("budgetResults").style.display = "none";
+}
+
+/* ---------- Net Worth Calculator ---------- */
+
+function calculateNetWorth(){
+
+    const cash = getValue("cash");
+    const investments = getValue("investments");
+    const property = getValue("property");
+    const vehicles = getValue("vehicles");
+
+    const mortgage = getValue("mortgage");
+    const studentLoans = getValue("studentLoans");
+    const creditCards = getValue("creditCards");
+    const otherDebt = getValue("otherDebt");
+
+    const assets = cash + investments + property + vehicles;
+    const liabilities = mortgage + studentLoans + creditCards + otherDebt;
+    const netWorth = assets - liabilities;
+
+    let messageClass = "success";
+    let messageText = "Positive net worth indicates assets exceed liabilities.";
+
+    if(netWorth < 0){
+        messageClass = "danger";
+        messageText = "Negative net worth suggests liabilities currently exceed assets.";
+    }
+
+    document.getElementById("netWorthResults").style.display = "block";
+
+    document.getElementById("netWorthResults").innerHTML = `
+        <div class="result-grid">
+
+            <div class="result-box">
+                <h4>Total Assets</h4>
+                <p>${formatCurrency(assets)}</p>
+            </div>
+
+            <div class="result-box">
+                <h4>Total Liabilities</h4>
+                <p>${formatCurrency(liabilities)}</p>
+            </div>
+
+            <div class="result-box">
+                <h4>Net Worth</h4>
+                <p>${formatCurrency(netWorth)}</p>
+            </div>
+
+        </div>
+
+        <div class="info-box ${messageClass}">
+            <strong>Financial Health Message:</strong> ${messageText}
+        </div>
+    `;
+}
+
+function resetNetWorth(){
+    clearInputs([
+        "cash",
+        "investments",
+        "property",
+        "vehicles",
+        "mortgage",
+        "studentLoans",
+        "creditCards",
+        "otherDebt"
+    ]);
+
+    document.getElementById("netWorthResults").style.display = "none";
+}
+
+/* ---------- Financial Ratio Calculator ---------- */
+
+function calculateRatios(){
+
+    const currentAssets = getValue("currentAssets");
+    const currentLiabilities = getValue("currentLiabilities");
+    const totalDebt = getValue("totalDebt");
+    const totalEquity = getValue("totalEquity");
+    const revenue = getValue("revenue");
+    const cogs = getValue("cogs");
+    const netIncome = getValue("netIncome");
+    const totalAssets = getValue("totalAssets");
+
+    const currentRatio =
+        currentLiabilities === 0 ? 0 :
+        currentAssets / currentLiabilities;
+
+    const debtToEquity =
+        totalEquity === 0 ? 0 :
+        totalDebt / totalEquity;
+
+    const grossMargin =
+        revenue === 0 ? 0 :
+        ((revenue - cogs) / revenue) * 100;
+
+    const roa =
+        totalAssets === 0 ? 0 :
+        (netIncome / totalAssets) * 100;
+
+    document.getElementById("ratioResults").style.display = "block";
+
+    document.getElementById("ratioResults").innerHTML = `
+
+        <div class="ratio-card">
+            <h3>Current Ratio</h3>
+            <p><strong>Formula:</strong> Current Assets ÷ Current Liabilities</p>
+            <p><strong>Result:</strong> ${currentRatio.toFixed(2)}</p>
+            <p><strong>Explanation:</strong> Measures short-term liquidity.</p>
+            <p><strong>Healthy Benchmark:</strong> Above 1.5</p>
+            <p><strong>Interpretation:</strong> ${currentRatio >= 1.5 ? "Strong liquidity position." : "Liquidity may require monitoring."}</p>
+        </div>
+
+        <div class="ratio-card">
+            <h3>Debt-to-Equity Ratio</h3>
+            <p><strong>Formula:</strong> Total Debt ÷ Total Equity</p>
+            <p><strong>Result:</strong> ${debtToEquity.toFixed(2)}</p>
+            <p><strong>Explanation:</strong> Indicates financial leverage.</p>
+            <p><strong>Healthy Benchmark:</strong> Below 2.0</p>
+            <p><strong>Interpretation:</strong> ${debtToEquity < 2 ? "Debt levels appear manageable." : "Higher leverage risk."}</p>
+        </div>
+
+        <div class="ratio-card">
+            <h3>Gross Profit Margin</h3>
+            <p><strong>Formula:</strong> (Revenue − COGS) ÷ Revenue</p>
+            <p><strong>Result:</strong> ${grossMargin.toFixed(2)}%</p>
+            <p><strong>Explanation:</strong> Shows profitability after production costs.</p>
+            <p><strong>Healthy Benchmark:</strong> Industry dependent; often above 30%</p>
+            <p><strong>Interpretation:</strong> ${grossMargin >= 30 ? "Healthy profitability." : "Margin improvement opportunities may exist."}</p>
+        </div>
+
+        <div class="ratio-card">
+            <h3>Return on Assets (ROA)</h3>
+            <p><strong>Formula:</strong> Net Income ÷ Total Assets</p>
+            <p><strong>Result:</strong> ${roa.toFixed(2)}%</p>
+            <p><strong>Explanation:</strong> Evaluates asset efficiency.</p>
+            <p><strong>Healthy Benchmark:</strong> Above 5%</p>
+            <p><strong>Interpretation:</strong> ${roa >= 5 ? "Assets are generating solid returns." : "Asset utilization could improve."}</p>
+        </div>
+    `;
+}
+
+function resetRatios(){
+
+    clearInputs([
+        "currentAssets",
+        "currentLiabilities",
+        "totalDebt",
+        "totalEquity",
+        "revenue",
+        "cogs",
+        "netIncome",
+        "totalAssets"
+    ]);
+
+    document.getElementById("ratioResults").style.display = "none";
+}
+
 </script>
 
 </body>
